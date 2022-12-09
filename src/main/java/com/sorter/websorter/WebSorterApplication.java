@@ -15,6 +15,12 @@ public class WebSorterApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebSorterApplication.class, args);
+
+        Random r = new Random(10000000);
+        IntSupplier supplier = () -> r.nextInt(1000000);
+        int[] data = IntStream.generate(supplier).limit(1500).toArray();
+
+        System.out.println(Arrays.toString(data));
     }
 
 }

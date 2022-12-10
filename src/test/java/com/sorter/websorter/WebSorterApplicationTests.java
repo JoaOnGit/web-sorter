@@ -1,15 +1,12 @@
 package com.sorter.websorter;
 
-import com.sorter.websorter.sort.QuickSort;
-import com.sorter.websorter.sort.MergeSort;
-import com.sorter.websorter.sort.InsertionSort;
+import com.sorter.websorter.sort.*;
 import com.sorter.websorter.utility.DataReader;
-import com.sorter.websorter.sort.BubbleSort;
-import com.sorter.websorter.sort.SelectionSort;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 @SpringBootTest
 class WebSorterApplicationTests {
@@ -18,7 +15,7 @@ class WebSorterApplicationTests {
     DataReader<Integer> dataReader;
 
     @Autowired
-    InsertionSort<Integer> sorter;
+    InsertionSort<Integer> insertionSort;
 
     @Autowired
     BubbleSort<Integer> bubbleSort;
@@ -26,61 +23,67 @@ class WebSorterApplicationTests {
     @Autowired
     SelectionSort<Integer> selectionSort;
 
+    @Autowired
+    QuickSort<Integer> quickSort;
+
+    @Autowired
+    MergeSort<Integer> mergeSort;
+
 	Integer[] data = new Integer[]{10, 4, 8, 2, 5, 7, 3, 6, 9, 1, 11, 45, 32, 90, 33, 2, 60, 22, 18, 20, 13, 27};
 	
   @Test
 	void contextLoads() {
-
 	}
+
+    void sortIntegerTest(AbstractSort<Integer> sort){
+      sort.setData(data);
+      sort.sort();
+      assertThat(sort.getData()).isSorted();
+    }
 
 	@Test
 	void QuickSortTest(){
-		QuickSort<Integer> quickSort = new QuickSort<>(bigdata);
-		quickSort.sort();
-		assertThat(bigdata).isSorted();
+		quickSort.setData(data);
+        sortIntegerTest(quickSort);
+        //Big Data Test
+        quickSort.setData(dataReader.readFile());
+        sortIntegerTest(quickSort);
 	}
    
 
     @Test
     void InsertionSortTest() {
-        InsertionSort<Integer> insertionSort = new InsertionSort<>(data);
-        insertionSort.sort();
-        assertThat(data).isSorted();
-        Integer[] bigdata = dataReader.readFile();
-        sorter.setData(bigdata);
-        sorter.sort();
-        assertThat(bigdata).isSorted();
+        insertionSort.setData(data);
+        sortIntegerTest(insertionSort);
+        //Big Data Test
+        insertionSort.setData(dataReader.readFile());
+        sortIntegerTest(insertionSort);
     }
 
     @Test
     void SelectionSortTest() {
         selectionSort.setData(data);
-        selectionSort.sort();
-        assertThat(data).isSorted();
-        Integer[] bigdata = dataReader.readFile();
-        selectionSort.setData(bigdata);
-        selectionSort.sort();
-        assertThat(bigdata).isSorted();
+        sortIntegerTest(selectionSort);
+        //Big Data Test
+        selectionSort.setData(dataReader.readFile());
+        sortIntegerTest(selectionSort);
     }
 
 	@Test
 	void MergeSortTest(){
-		MergeSort<Integer> mergeSort0 = new MergeSort<>(data);
-		mergeSort0.sort();
-		assertThat(data).isSorted();
-		MergeSort<Integer> mergeSort1 = new MergeSort<>(bigdata);
-		mergeSort1.sort();
-		assertThat(bigdata).isSorted();
+        mergeSort.setData(data);
+        sortIntegerTest(mergeSort);
+        //Big Data Test
+        mergeSort.setData(dataReader.readFile());
+        sortIntegerTest(mergeSort);
 	}
     @Test
     void bubbleSortTest() {
         bubbleSort.setData(data);
-        bubbleSort.sort();
-        assertThat(data).isSorted();
-        Integer[] bigdata = dataReader.readFile();
-        bubbleSort.setData(bigdata);
-        bubbleSort.sort();
-        assertThat(bigdata).isSorted();
+        sortIntegerTest(bubbleSort);
+        //Big Data Test
+        bubbleSort.setData(dataReader.readFile());
+        sortIntegerTest(bubbleSort);
     }
 
 }

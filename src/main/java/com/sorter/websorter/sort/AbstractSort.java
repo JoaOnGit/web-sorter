@@ -13,6 +13,8 @@ public abstract class AbstractSort<T extends Comparable<T>> implements Sorter<T>
         this.data = data;
     }
 
+    public T[] getData(){return this.data; }
+
     //swap method
     public void swap(int i, int j){
         T temp = data[i];

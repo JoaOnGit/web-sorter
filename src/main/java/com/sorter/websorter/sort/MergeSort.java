@@ -1,5 +1,8 @@
 package com.sorter.websorter.sort;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class MergeSort<T extends  Comparable<T>> extends AbstractSort<T> {
 
     public MergeSort(T[] data){

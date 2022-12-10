@@ -2,6 +2,7 @@ package com.sorter.websorter.utility;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,15 +10,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-@Configuration
+@Service
 public class DataReader<T> {
 
-    @Bean
-    public Integer[] readFile() {
+    public Integer[] readFile(String url) {
        // List<Integer> data = new ArrayList<>();
-        File file = new File("src/test/resources/testdata");
+        File file = new File("src/test/resources/big-data");
         //System.out.println(file.getAbsoluteFile());
-       try(BufferedReader br = new BufferedReader(new FileReader("src/test/resources/testdata"))){
+       try(BufferedReader br = new BufferedReader(new FileReader("src/test/resources/"+url))){
             String line, text = "";
             while((line = br.readLine()) != null){
                 text = line;

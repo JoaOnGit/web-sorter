@@ -2,6 +2,7 @@ package com.sorter.websorter.sort;
 
 import org.springframework.stereotype.Service;
 
+@Service
 public abstract class AbstractSort<T extends Comparable<T>> implements Sorter<T> {
     T[] data;
     public AbstractSort(){}

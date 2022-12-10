@@ -1,5 +1,6 @@
 package com.sorter.websorter;
 
+import com.sorter.websorter.sort.MergeSort;
 import com.sorter.websorter.sort.InsertionSort;
 import com.sorter.websorter.utility.DataReader;
 import com.sorter.websorter.sort.BubbleSort;
@@ -52,6 +53,15 @@ class WebSorterApplicationTests {
         assertThat(bigdata).isSorted();
     }
 
+	@Test
+	void MergeSortTest(){
+		MergeSort<Integer> mergeSort0 = new MergeSort<>(data);
+		mergeSort0.sort();
+		assertThat(data).isSorted();
+		MergeSort<Integer> mergeSort1 = new MergeSort<>(bigdata);
+		mergeSort1.sort();
+		assertThat(bigdata).isSorted();
+	}
     @Test
     void bubbleSortTest() {
         bubbleSort.setData(data);

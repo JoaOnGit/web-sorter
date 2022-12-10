@@ -1,10 +1,13 @@
 package com.sorter.websorter.sort;
 
+import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+@Service
 public class SelectionSort<T extends Comparable<T>> extends AbstractSort<T> {
 
     public SelectionSort(T[] data) {

@@ -1,5 +1,6 @@
 package com.sorter.websorter;
 
+import com.sorter.websorter.sort.QuickSort;
 import com.sorter.websorter.sort.MergeSort;
 import com.sorter.websorter.sort.InsertionSort;
 import com.sorter.websorter.utility.DataReader;
@@ -21,15 +22,24 @@ class WebSorterApplicationTests {
 
     @Autowired
     BubbleSort<Integer> bubbleSort;
-
+    
     @Autowired
     SelectionSort<Integer> selectionSort;
 
-    Integer[] data = new Integer[]{10, 4, 8, 2, 5, 7, 3, 6, 9, 1};
+	Integer[] data = new Integer[]{10, 4, 8, 2, 5, 7, 3, 6, 9, 1, 11, 45, 32, 90, 33, 2, 60, 22, 18, 20, 13, 27};
+	
+  @Test
+	void contextLoads() {
 
-    @Test
-    void contextLoads() {
-    }
+	}
+
+	@Test
+	void QuickSortTest(){
+		QuickSort<Integer> quickSort = new QuickSort<>(bigdata);
+		quickSort.sort();
+		assertThat(bigdata).isSorted();
+	}
+   
 
     @Test
     void InsertionSortTest() {

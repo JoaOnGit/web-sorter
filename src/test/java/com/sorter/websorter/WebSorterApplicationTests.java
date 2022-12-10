@@ -1,8 +1,7 @@
 package com.sorter.websorter;
 
-import com.sorter.websorter.sort.AbstractSort;
 import com.sorter.websorter.sort.InsertionSort;
-import com.sorter.websorter.services.DataReader;
+import com.sorter.websorter.utility.DataReader;
 import com.sorter.websorter.sort.BubbleSort;
 import com.sorter.websorter.sort.SelectionSort;
 import org.junit.jupiter.api.Test;

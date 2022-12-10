@@ -1,4 +1,4 @@
-package com.sorter.websorter.services;
+package com.sorter.websorter.utility;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

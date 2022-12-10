@@ -1,5 +1,8 @@
 package com.sorter.websorter.sort;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class BubbleSort<T extends Comparable<T>> extends AbstractSort<T>{
 
     public BubbleSort(T[] data){

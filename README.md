@@ -1,6 +1,13 @@
 # web-sorter: A Simple Web Sorting App
 The web app aims to demonstrate the sorting alogorithms. It accepts a GET request from a user and response with a JSON object highliting the time, algorithm type and sorted data
 
+##Algorithms Implemented:
+1. Quick Sort
+2. Merge Sort
+3. Insertion Sort
+4. Selection Sort
+5. Bubble Sort
+
 ##Sample Request
 
 ```

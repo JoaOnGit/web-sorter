@@ -1,11 +1,14 @@
 package com.sorter.websorter;
 
+import com.sorter.websorter.sort.InsertionSort;
 import com.sorter.websorter.services.DataReader;
 import com.sorter.websorter.sort.BubbleSort;
 import com.sorter.websorter.sort.SelectionSort;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -15,11 +18,19 @@ class WebSorterApplicationTests {
 	DataReader<Integer> dataReader;
 
 	Integer[] data = new Integer[]{10, 4, 8, 2, 5, 7, 3, 6, 9, 1};
-	@Test
+
+  @Test
 	void contextLoads() {
 	}
 
 	@Test
+	void InsertionSortTest(){
+		InsertionSort<Integer> insertionSort = new InsertionSort<>(data);
+		insertionSort.sort();
+		assertThat(data).isSorted();
+	}
+
+  @Test
 	void SelectionSortTest(){
 		SelectionSort<Integer> selectionSort = new SelectionSort<>(data);
 		selectionSort.sort();
